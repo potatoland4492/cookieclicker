@@ -1,0 +1,55 @@
+body {
+  font-size: 1.5em;
+  margin: 1em;
+  padding: 2.5em;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body * {
+  font-size: inherit;
+}
+
+span.count-span {
+  display: inline-block;
+  font-family: 'Source Code Pro', 'Ubuntu Mono', monospace;
+  font-size: 2.5em;
+  border: 5px solid red;
+  padding: 15px 25px;
+}
+
+button {
+  display: inline-block;
+  padding: 10px;
+}
+button:focus {
+  border: 10px solid lime;
+  transform: scaleZ(1.5);
+}
+button#addcookie-btn {
+  font-size: 2em;
+}
+
+img.cookie-img {
+  display: inline;
+  height: 1em;
+  vertical-align: middle;
+}
+
+article {
+  font-size: 0.8em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 22.5em;
+  height: 100vh;
+  background-color: #777777;
+  color: white;
+  padding: 2.5em;
+}
+
+span.code {
+  font-family: 'Source Code Pro', 'Ubuntu Mono', monospace;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+}

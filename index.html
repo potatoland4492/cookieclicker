@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=100%">
+  <meta name="author" content="Akhil Pillai">
+  <meta name="description" content="Cookie Clicker">
+  <meta name="keywords" content="">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <title>Cookie Clicker</title>
+</head>
+<body>
+  <main>
+  <span id="cookiecount-span" class="count-span">0 <img class="cookie-img" src="cookie.png"></span>
+  <br><br>
+  <button id="addcookie-btn" onclick="Store.addCookie()"><span class="code">+1</span> <img class="cookie-img" src="cookie.png"></button><br><br>
+  <button id="addclickpower-btn" onclick="Store.upgradeClickpower()">Upgrade Clickpower (currently Lvl 1)</button><br><br>
+  <button id="addgenerator-btn" onclick="Store.upgradeGenerator()">Upgrade Generator (currently Lvl 1)</button>
+  <script src="main.js"></script>
+  </main>
+  <article>
+    <p id="warning"></p>
+    <br><br><br>
+    Placeholders:<br>
+      <span class="code">${clickpowerLvl}</span>: Clickpower Level<br>
+      <span class="code">${generatorLvl}</span>: Generator Level<br><br>
+    Clickpower:<br>
+      Each time you click (use the spacebar or a mouse - it's faster than using a trackpad), you will earn <span class="code">${clickpowerLvl}</span> cookies.<br><br>
+    Generator:<br>
+      The generator will generate <span class="code">${generatorLvl}</span> cookies every 0.5 seconds.
+  </article>
+</body>
+</html>
