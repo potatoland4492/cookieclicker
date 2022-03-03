@@ -26,6 +26,7 @@ let Store = {
       localStorage.removeItem('cookies');
       localStorage.removeItem('clickpower');
       localStorage.removeItem('generator');
+      location.reload();
     } else {
       alert('Aborted, data not cleared.');
     }
@@ -42,7 +43,7 @@ setInterval(function () {
   localStorage.setItem('cookies', Store.cookies);
   localStorage.setItem('clickpower', Store.clickpower);
   localStorage.setItem('generator', Store.generator);
-}, 1);
+}, 1000);
 
 setInterval(function () {
   document.getElementById('addcookie-btn').innerHTML = `<span class=\"code\">+${parseInt(Store.clickpower)}</span> <img class=\"cookie-img\" src=\"cookie.png\">`
