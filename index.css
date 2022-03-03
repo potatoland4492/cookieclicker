@@ -1,12 +1,20 @@
 body {
   font-size: 1.5em;
-  margin: 1em;
-  padding: 2.5em;
+  margin: 0;
+  padding: 0;
   font-family: 'Ubuntu', sans-serif;
 }
 
 body * {
   font-size: inherit;
+}
+
+main {
+  padding: 2.5em;
+  margin: 0;
+  background-color: black;
+  color: white;
+  height: 100vh;
 }
 
 span.count-span {
@@ -20,10 +28,14 @@ span.count-span {
 button {
   display: inline-block;
   padding: 10px;
+  background-color: #555555;
+  border: 10px ridge #aaaaaa;
+  color: inherit;
+  max-width: 30em;
 }
 button:focus {
-  border: 10px solid lime;
-  transform: scaleZ(1.5);
+  border-color: #cccccc;
+  transform: scale(1.125);
 }
 button#addcookie-btn {
   font-size: 2em;
@@ -41,10 +53,11 @@ article {
   top: 0;
   right: 0;
   width: 22.5em;
-  height: 100vh;
   background-color: #777777;
   color: white;
   padding: 2.5em;
+  margin: 0;
+  height: 100vh;
 }
 
 span.code {

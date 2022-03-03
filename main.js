@@ -1,12 +1,12 @@
 let Store = {
-  cookies: '0',
-  clickpower: '1',
-  generator: '1',
+  cookies: '1000',
+  clickpower: '1000',
+  generator: '1000',
   addCookie: function () {
     Store.cookies = parseInt(Store.cookies) + parseInt(Store.clickpower);
   },
   upgradeClickpower: function () {
-    if (parseInt(Store.cookies) < 50 * parseInt(Store.clickpower)){
+    if (parseInt(Store.cookies) < 50 * parseInt(Store.clickpower)) {
       alert(`You need ${parseInt(Store.clickpower * 50)} cookies to upgrade clickpower (${50 * parseInt(Store.clickpower) - parseInt(Store.cookies)} more).`)
     } else {
       Store.cookies = parseInt(Store.cookies) - 50 * parseInt(Store.clickpower);
@@ -22,6 +22,18 @@ let Store = {
     }
   },
 };
+
+if (localStorage.getItem('cookies') && localStorage.getItem('clickpower') && localStorage.getItem('generator')) {
+  Store.cookies = localStorage.getItem('cookies');
+  Store.clickpower = localStorage.getItem('clickpower');
+  Store.generator = localStorage.getItem('generator');
+}
+
+setInterval(function () {
+  localStorage.setItem('cookies', Store.cookies);
+  localStorage.setItem('clickpower', Store.clickpower);
+  localStorage.setItem('generator', Store.generator);
+}, 1);
 
 setInterval(function () {
   document.getElementById('addcookie-btn').innerHTML = `<span class=\"code\">+${parseInt(Store.clickpower)}</span> <img class=\"cookie-img\" src=\"cookie.png\">`
