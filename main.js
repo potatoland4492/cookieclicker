@@ -23,9 +23,7 @@ let Store = {
   },
   clearData: function () {
     if (prompt('Are you sure? This will reset your progress! Type an UPPERCASE letter Y to clear.', 'n') === 'Y') {
-      localStorage.removeItem('cookies');
-      localStorage.removeItem('clickpower');
-      localStorage.removeItem('generator');
+      localStorage.clear();
       location.reload();
     } else {
       alert('Aborted, data not cleared.');
