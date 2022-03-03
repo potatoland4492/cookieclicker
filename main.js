@@ -1,7 +1,7 @@
 let Store = {
-  cookies: '0',
-  clickpower: '1',
-  generator: '1',
+  cookies: '1000',
+  clickpower: '1000',
+  generator: '1000',
   addCookie: function () {
     Store.cookies = parseInt(Store.cookies) + parseInt(Store.clickpower);
   },
@@ -21,6 +21,15 @@ let Store = {
       Store.generator = parseInt(Store.generator) + 1;
     }
   },
+  clearData: function () {
+    if (prompt('Are you sure? This will reset your progress! Type an UPPERCASE letter Y to clear.', 'n') === 'Y') {
+      localStorage.removeItem('cookies');
+      localStorage.removeItem('clickpower');
+      localStorage.removeItem('generator');
+    } else {
+      alert('Aborted, data not cleared.');
+    }
+  }
 };
 
 if (localStorage.getItem('cookies') && localStorage.getItem('clickpower') && localStorage.getItem('generator')) {
