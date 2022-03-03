@@ -1,7 +1,7 @@
 let Store = {
-  cookies: '1000',
-  clickpower: '1000',
-  generator: '1000',
+  cookies: '0',
+  clickpower: '1',
+  generator: '1',
   addCookie: function () {
     Store.cookies = parseInt(Store.cookies) + parseInt(Store.clickpower);
   },
