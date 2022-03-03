@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Ubuntu', sans-serif;
+  overflow: hidden;
 }
 
 body * {
@@ -14,11 +15,14 @@ main {
   margin: 0;
   background-color: black;
   color: white;
+  width: calc(100vw - 25em);
+  display: inline-block;
   height: 100vh;
 }
 
 span.count-span {
-  display: inline-block;
+  display: block;
+  text-align: right;
   font-family: 'Source Code Pro', 'Ubuntu Mono', monospace;
   font-size: 2.5em;
   border: 5px solid red;
@@ -49,14 +53,13 @@ img.cookie-img {
 
 article {
   font-size: 0.8em;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 22.5em;
+  /* display: inline-block; */
+  width: 20em;
   background-color: #777777;
   color: white;
   padding: 2.5em;
   margin: 0;
+  float: right;
   height: 100vh;
 }
 
