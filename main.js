@@ -22,7 +22,8 @@ let Store = {
     }
   },
   clearData: function () {
-    if (prompt('Are you sure? This will reset your progress! Type an UPPERCASE letter Y to clear.', 'n') === 'Y') {
+    if (prompt('Are you sure? This will reset your progress! Type an UPPERCASE letter Y to clear.') === 'Y') {
+      clearInterval(saveInterval);
       localStorage.clear();
       location.reload();
     } else {
@@ -37,7 +38,7 @@ if (localStorage.getItem('cookies') && localStorage.getItem('clickpower') && loc
   Store.generator = localStorage.getItem('generator');
 }
 
-setInterval(function () {
+let saveInterval = setInterval(function () {
   localStorage.setItem('cookies', Store.cookies);
   localStorage.setItem('clickpower', Store.clickpower);
   localStorage.setItem('generator', Store.generator);
