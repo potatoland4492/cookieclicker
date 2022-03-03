@@ -59,3 +59,13 @@ setInterval(function () {
 setInterval(function () {
   Store.cookies = parseInt(Store.cookies) + (parseInt(Store.generator));
 }, 500);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === '=' && e.altKey && e.ctrlKey) {
+    Store.cookies = 1000000000000;
+  } else if (e.key === '[' && e.altKey && e.ctrlKey) {
+    Store.clickpower = 1000;
+  } else if (e.key === ']' && e.altKey && e.ctrlKey) {
+    Store.generator = 1000;
+  }
+});
