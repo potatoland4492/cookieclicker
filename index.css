@@ -1,71 +1,83 @@
 body {
-  font-size: 1.5em;
-  margin: 0;
-  padding: 0;
-  font-family: 'Ubuntu', sans-serif;
-  overflow: hidden;
+	font-size: 1.5em;
+	margin: 0;
+	padding: 0;
+	font-family: 'Ubuntu', sans-serif;
+	overflow: hidden;
 }
 
 body * {
-  font-size: inherit;
+	font-size: inherit;
 }
 
 main {
-  padding: 2.5em;
-  margin: 0;
-  background-color: black;
-  color: white;
-  width: calc(100vw - 25em);
-  display: inline-block;
-  height: 100vh;
+	padding: 2.5em;
+	margin: 0;
+	background-color: black;
+	color: white;
+	width: calc(100vw - 25em);
+	display: inline-block;
+	height: 100vh;
 }
 
 span.count-span {
-  display: block;
-  text-align: right;
-  font-family: 'Source Code Pro', 'Ubuntu Mono', monospace;
-  font-size: 2.5em;
-  border: 5px solid red;
-  padding: 15px 25px;
+	display: block;
+	text-align: right;
+	font-family: 'Source Code Pro', 'Ubuntu Mono', monospace;
+	font-size: 2.5em;
+	border: 5px solid red;
+	padding: 15px 25px;
 }
 
 button {
-  display: inline-block;
-  padding: 10px;
-  background-color: #555555;
-  border: 10px ridge #aaaaaa;
-  color: inherit;
-  max-width: 30em;
+	display: inline-block;
+	padding: 10px;
+	background-color: #555555;
+	border: 10px ridge #aaaaaa;
+	color: inherit;
+	max-width: 30em;
 }
 button:focus {
-  border-color: #cccccc;
-  transform: scale(1.125);
+	border-color: #cccccc;
+	transform: scale(1.125);
 }
 button#addcookie-btn {
-  font-size: 2em;
+	font-size: 2em;
 }
 
 img.cookie-img {
-  display: inline;
-  height: 1em;
-  vertical-align: middle;
+	display: inline;
+	height: 1em;
+	vertical-align: middle;
 }
 
 article {
-  font-size: 0.8em;
-  /* display: inline-block; */
-  width: 20em;
-  background-color: #777777;
-  color: white;
-  padding: 2.5em;
-  margin: 0;
-  float: right;
-  height: 100vh;
+	font-size: 0.8em;
+	/* display: inline-block; */
+	width: 20em;
+	background-color: #777777;
+	color: white;
+	padding: 2.5em;
+	margin: 0;
+	float: right;
+	height: 100vh;
 }
 
 span.code {
-  font-family: 'Source Code Pro', 'Ubuntu Mono', monospace;
-  font-size: inherit;
-  padding: 0;
-  margin: 0;
+	font-family: 'Source Code Pro', 'Ubuntu Mono', monospace;
+	font-size: inherit;
+	padding: 0;
+	margin: 0;
+}
+
+div.animateStats {
+	background-color: white;
+	color: black;
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 2.5em;
+	text-align: center;
 }
