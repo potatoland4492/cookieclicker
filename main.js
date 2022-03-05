@@ -1,10 +1,10 @@
-let CookieStore = {
-  // stats: {
-  //   tenK: false,
-  //   million: false,
-  //   billion: false,
-  //   trillion: false
-  // },
+let Store = {
+  stats: {
+    tenK: false,
+    million: false,
+    billion: false,
+    trillion: false
+  },
   cookies: '0',
   clickpower: '1',
   generator: '1',
@@ -107,40 +107,40 @@ setInterval(function () {
 	Store.cookies = parseInt(Store.cookies) + (parseInt(Store.generator));
 }, 500);
 
-// document.addEventListener('keydown', (e) => {
-// 	if (e.key === '~' && e.altKey && e.ctrlKey) {
-// 		Store.cookies = 1000000;
-// 	} else if (e.key === '\\' && e.altKey && e.ctrlKey) {
-// 		Store.clickpower = 1000000;
-// 	} else if (e.key === '|' && e.altKey && e.ctrlKey) {
-// 		Store.generator = 1000000;
-// 	}
-// });
+document.addEventListener('keydown', (e) => {
+	if (e.key === '~' && e.altKey && e.ctrlKey) {
+		Store.cookies = 1000000;
+	} else if (e.key === '\\' && e.altKey && e.ctrlKey) {
+		Store.clickpower = 1000000;
+	} else if (e.key === '|' && e.altKey && e.ctrlKey) {
+		Store.generator = 1000000;
+	}
+});
 
-// setInterval(function () {
-// 	let div;
-// 	if (Store.stats.tenK === false && Store.cookies >= 10000) {
-// 		div = document.createElement('div').setAttribute('class', 'animateStats');
-// 		div.innerHTML = "Ten thousand <img class=\"cookie-img\" src=\"cookie.png\">? Wow!";
-// 		Store.stats.tenK = true;
-// 		setTimeout(function () { div.remove(); }, 2500);
-// 	}
-// 	if (Store.stats.million === false && Store.cookies >= 1000000) {
-// 		div = document.createElement('div').setAttribute('class', 'animateStats');
-// 		div.innerHTML = "One million <img class=\"cookie-img\" src=\"cookie.png\">? Nice!";
-// 		Store.stats.million = true;
-// 		setTimeout(function () { div.remove(); }, 2500);
-// 	}
-// 	if (Store.stats.billion === false && Store.cookies >= 1000000000) {
-// 		div = document.createElement('div').setAttribute('class', 'animateStats');
-// 		div.innerHTML = "A billion <img class=\"cookie-img\" src=\"cookie.png\">? Epic!";
-// 		Store.stats.billion = true;
-// 		setTimeout(function () { div.remove(); }, 2500);
-// 	}
-// 	if (Store.stats.trillion === false && Store.cookies >= 1000000000000) {
-// 		div = document.createElement('div').setAttribute('class', 'animateStats');
-// 		div.innerHTML = "ONE MILLION <img class=\"cookie-img\" src=\"cookie.png\">? Keep on clicking!";
-// 		Store.stats.trillion = true;
-// 		setTimeout(function () { div.remove(); }, 2500);
-// 	}
-// }, 1);
+setInterval(function () {
+	let div;
+	if (Store.stats.tenK === false && Store.cookies >= 10000) {
+		div = document.createElement('div').setAttribute('class', 'animateStats');
+		div.innerHTML = "Ten thousand <img class=\"cookie-img\" src=\"cookie.png\">? Wow!";
+		Store.stats.tenK = true;
+		setTimeout(function () { div.remove(); }, 2500);
+	}
+	if (Store.stats.million === false && Store.cookies >= 1000000) {
+		div = document.createElement('div').setAttribute('class', 'animateStats');
+		div.innerHTML = "One million <img class=\"cookie-img\" src=\"cookie.png\">? Nice!";
+		Store.stats.million = true;
+		setTimeout(function () { div.remove(); }, 2500);
+	}
+	if (Store.stats.billion === false && Store.cookies >= 1000000000) {
+		div = document.createElement('div').setAttribute('class', 'animateStats');
+		div.innerHTML = "A billion <img class=\"cookie-img\" src=\"cookie.png\">? Epic!";
+		Store.stats.billion = true;
+		setTimeout(function () { div.remove(); }, 2500);
+	}
+	if (Store.stats.trillion === false && Store.cookies >= 1000000000000) {
+		div = document.createElement('div').setAttribute('class', 'animateStats');
+		div.innerHTML = "ONE MILLION <img class=\"cookie-img\" src=\"cookie.png\">? Keep on clicking!";
+		Store.stats.trillion = true;
+		setTimeout(function () { div.remove(); }, 2500);
+	}
+}, 1);
