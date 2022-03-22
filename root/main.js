@@ -1,13 +1,7 @@
 let Store = {
-  stats: {
-    tenK: false,
-    million: false,
-    billion: false,
-    trillion: false
-  },
-  cookies: '0',
+	potatoes: '0',
   clickpower: '1',
-  generator: '1',
+  farms: '1',
   costSlope: function (type) {
     switch (type) {
       case 'clickpower':
@@ -25,18 +19,18 @@ let Store = {
           return 1000000000;
         }
         break;
-      case 'generator':
-        if (Store.generator < 100) {
+      case 'farms':
+        if (Store.farms < 100) {
           return 25;
-        } if (Store.generator < 1000) {
+        } if (Store.farms < 1000) {
           return 50;
-        } else if (Store.generator < 10000) {
+        } else if (Store.farms < 10000) {
           return 100;
-        } else if (Store.generator < 1000000) {
+        } else if (Store.farms < 1000000) {
           return 10000;
-        } else if (Store.generator < 1000000000) {
+        } else if (Store.farms < 1000000000) {
           return 1000000;
-        } else if (Store.generator < 1000000000000) {
+        } else if (Store.farms < 1000000000000) {
           return 1000000000;
         }
         break;
@@ -45,23 +39,23 @@ let Store = {
         break;
     }
   },
-  addCookie: function () {
-    Store.cookies = parseInt(Store.cookies) + parseInt(Store.clickpower);
+  addPotato: function () {
+    Store.potatoes = parseInt(Store.potatoes) + parseInt(Store.clickpower);
   },
   upgradeClickpower: function () {
-    if (parseInt(Store.cookies) < Store.costSlope('clickpower') * parseInt(Store.clickpower)) {
-      alert(`You need ${parseInt(Store.clickpower * Store.costSlope('clickpower'))} cookies to upgrade clickpower (${Store.costSlope('clickpower') * parseInt(Store.clickpower) - parseInt(Store.cookies)} more).`)
+    if (parseInt(Store.potatoes) < Store.costSlope('clickpower') * parseInt(Store.clickpower)) {
+      f.modal(`You need ${parseInt(Store.clickpower * Store.costSlope('clickpower'))} potatoes to upgrade clickpower (${Store.costSlope('clickpower') * parseInt(Store.clickpower) - parseInt(Store.potatoes)} more).`)
     } else {
-      Store.cookies = parseInt(Store.cookies) - Store.costSlope('clickpower') * parseInt(Store.clickpower);
+      Store.potatoes = parseInt(Store.potatoes) - Store.costSlope('clickpower') * parseInt(Store.clickpower);
       Store.clickpower = parseInt(Store.clickpower) + 1;
     }
   },
-  upgradeGenerator: function () {
-    if (parseInt(Store.cookies) < Store.costSlope('generator') * parseInt(Store.generator)) {
-      alert(`You need ${parseInt(Store.generator * Store.costSlope('generator'))} cookies to upgrade the generator (${Store.costSlope('generator') * parseInt(Store.generator) - parseInt(Store.cookies)} more).`)
+  addFarm: function () {
+    if (parseInt(Store.potatoes) < Store.costSlope('farms') * parseInt(Store.farms)) {
+      f.modal(`You need ${parseInt(Store.farms * Store.costSlope('farms'))} potatoes to upgrade the farms (${Store.costSlope('farms') * parseInt(Store.farms) - parseInt(Store.potatoes)} more).`)
     } else {
-      Store.cookies = parseInt(Store.cookies) - Store.costSlope('generator') * parseInt(Store.generator);
-      Store.generator = parseInt(Store.generator) + 1;
+      Store.potatoes = parseInt(Store.potatoes) - Store.costSlope('farms') * parseInt(Store.farms);
+      Store.farms = parseInt(Store.farms) + 1;
     }
   },
   clearData: function () {
@@ -75,69 +69,78 @@ let Store = {
   }
 };
 
-if (localStorage.getItem('cookies') && localStorage.getItem('clickpower') && localStorage.getItem('generator')) {
-	Store.cookies = localStorage.getItem('cookies');
+let f = {
+	modal: function (message) {
+		let div = document.createElement('div');
+		div.style="zindex:1000;background-image:rgba(100,100,100,50);position:absolute;top:0;left:0;width:100vw;height:100vh;line-height:100vh;padding:0;margin:0;text-align:center";
+		document.body.appendChild(div);
+	}
+};
+
+
+if (localStorage.getItem('potatoes') && localStorage.getItem('clickpower') && localStorage.getItem('farms')) {
+	Store.potatoes = localStorage.getItem('potatoes');
 	Store.clickpower = localStorage.getItem('clickpower');
-	Store.generator = localStorage.getItem('generator');
+	Store.farms = localStorage.getItem('farms');
 }
 
 let saveInterval = setInterval(function () {
-	localStorage.setItem('cookies', Store.cookies);
+	localStorage.setItem('potatoes', Store.potatoes);
 	localStorage.setItem('clickpower', Store.clickpower);
-	localStorage.setItem('generator', Store.generator);
+	localStorage.setItem('farms', Store.farms);
 }, 10000);
 
 setInterval(function () {
-	document.getElementById('addcookie-btn').innerHTML = `<span class=\"code\">+${parseInt(Store.clickpower)}</span> <img class=\"cookie-img\" src=\"cookie.png\">`
+	document.getElementById('addcookie-btn').innerHTML = `<span class=\"code\">+${parseInt(Store.clickpower)}</span> <img class=\"potato-img\" src=\"potato.png\">`
 }, 1);
 
 setInterval(function () {
-	document.getElementById('cookiecount-span').innerHTML = Store.cookies + ' <img class=\"cookie-img\" src=\"cookie.png\">';
+	document.getElementById('potatocount-span').innerHTML = Store.potatoes + ' <img class=\"potaot-img\" src=\"potato.png\">';
 }, 1);
 
 setInterval(function () {
-	document.getElementById('addclickpower-btn').innerHTML = 'Upgrade Clickpower (currently <span class=\"code\">Lvl ' + Store.clickpower + '</span>, costs <span class=\"code\">' + parseInt(Store.clickpower) * Store.costSlope('clickpower') + '</span> <img class=\"cookie-img\" src=\"cookie.png\"> to upgrade)';
+	document.getElementById('addclickpower-btn').innerHTML = 'Upgrade Clickpower (currently <span class=\"code\">Lvl ' + Store.clickpower + '</span>, costs <span class=\"code\">' + parseInt(Store.clickpower) * Store.costSlope('clickpower') + '</span> <img class=\"poato-img\" src=\"potato.png\"> to upgrade)';
 }, 1);
 
 setInterval(function () {
-	document.getElementById('addgenerator-btn').innerHTML = 'Upgrade Generator (currently <span class=\"code\">Lvl ' + Store.generator + '</span>, costs <span class=\"code\">' + parseInt(Store.generator) * Store.costSlope('generator') + '</span> <img class=\"cookie-img\" src=\"cookie.png\"> to upgrade)';
+	document.getElementById('addfarms-btn').innerHTML = 'Upgrade farms (currently <span class=\"code\">Lvl ' + Store.farms + '</span>, costs <span class=\"code\">' + parseInt(Store.farms) * Store.costSlope('farms') + '</span> <img class=\"potato-img\" src=\"potato.png\"> to upgrade)';
 }, 1);
 
 setInterval(function () {
-	Store.cookies = parseInt(Store.cookies) + (parseInt(Store.generator));
+	Store.potatoes = parseInt(Store.potatoes) + (parseInt(Store.farms));
 }, 500);
 
 document.addEventListener('keydown', (e) => {
 	if (e.key === '~' && e.altKey && e.ctrlKey) {
-		Store.cookies = 1000000;
+		Store.potatoes = 1000000;
 	} else if (e.key === '\\' && e.altKey && e.ctrlKey) {
 		Store.clickpower = 1000000;
 	} else if (e.key === '|' && e.altKey && e.ctrlKey) {
-		Store.generator = 1000000;
+		Store.farms = 1000000;
 	}
 });
 
 setInterval(function () {
 	let div;
-	if (Store.stats.tenK === false && Store.cookies >= 10000) {
+	if (Store.stats.tenK === false && Store.potatoes >= 10000) {
 		div = document.createElement('div').setAttribute('class', 'animateStats');
 		div.innerHTML = "Ten thousand <img class=\"cookie-img\" src=\"cookie.png\">? Wow!";
 		Store.stats.tenK = true;
 		setTimeout(function () { div.remove(); }, 2500);
 	}
-	if (Store.stats.million === false && Store.cookies >= 1000000) {
+	if (Store.stats.million === false && Store.potatoes >= 1000000) {
 		div = document.createElement('div').setAttribute('class', 'animateStats');
 		div.innerHTML = "One million <img class=\"cookie-img\" src=\"cookie.png\">? Nice!";
 		Store.stats.million = true;
 		setTimeout(function () { div.remove(); }, 2500);
 	}
-	if (Store.stats.billion === false && Store.cookies >= 1000000000) {
+	if (Store.stats.billion === false && Store.potatoes >= 1000000000) {
 		div = document.createElement('div').setAttribute('class', 'animateStats');
 		div.innerHTML = "A billion <img class=\"cookie-img\" src=\"cookie.png\">? Epic!";
 		Store.stats.billion = true;
 		setTimeout(function () { div.remove(); }, 2500);
 	}
-	if (Store.stats.trillion === false && Store.cookies >= 1000000000000) {
+	if (Store.stats.trillion === false && Store.potatoes >= 1000000000000) {
 		div = document.createElement('div').setAttribute('class', 'animateStats');
 		div.innerHTML = "ONE MILLION <img class=\"cookie-img\" src=\"cookie.png\">? Keep on clicking!";
 		Store.stats.trillion = true;

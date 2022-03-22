@@ -4,19 +4,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=100%">
 	<meta name="author" content="Akhil Pillai">
-	<meta name="description" content="Cookie Clicker">
-	<meta name="keywords" content="cookie clicker">
+	<meta name="description" content="Potato Farms">
+	<meta name="keywords" content="cookie clicker, potato farm">
 	<link rel="stylesheet" href="index.css" type="text/css">
-	<link rel="icon" href="cookie.png" type="image/png">
-	<title>Cookie Clicker</title>
+	<link rel="icon" href="potato.png" type="image/png">
+	<title>Potato Farms</title>
 </head>
 <body>
 	<main>
-		<span id="cookiecount-span" class="count-span">0 <img class="cookie-img" src="cookie.png"></span>
+		<span id="cookiecount-span" class="count-span">0 <img class="cookie-img" src="potato.png"></span>
 		<br><br>
-		<button id="addcookie-btn" onclick="Store.addCookie()"><span class="code">+1</span> <img class="cookie-img" src="cookie.png"></button><br><br>
+		<button id="addpotato-btn" onclick="Store.addPotato()"><span class="code">+1</span> <img class="potato-img" src="potato.png"></button><br><br>
 		<button id="addclickpower-btn" onclick="Store.upgradeClickpower()">Upgrade Clickpower (currently Lvl 1)</button><br><br>
-		<button id="addgenerator-btn" onclick="Store.upgradeGenerator()">Upgrade Generator (currently Lvl 1)</button>
+		<button id="addfarm-btn" onclick="Store.addFarm()">Add Farm (you have 1 Farm)</button>
 		<button id="open-help-btn" onclick="document.getElementById('help').style.display = 'block';">Display help</button>
 	</main>
 	<article id="help">
@@ -26,11 +26,11 @@
 		<br><br><br>
 		Placeholders:<br>
 			<span class="code">${clickpowerLvl}</span>: Clickpower Level<br>
-			<span class="code">${generatorLvl}</span>: Generator Level<br><br>
+			<span class="code">${farms}</span>: Number of Farms<br><br>
 		Clickpower:<br>
 			Each time you click (use the spacebar or a mouse - it's faster than using a trackpad), you will earn <span class="code">${clickpowerLvl}</span> cookies.<br><br>
 		Generator:<br>
-			The generator will generate <span class="code">${generatorLvl}</span> cookies every 0.5 seconds.
+			The farms will generate <span class="code">${farms}</span> cookies every 0.5 seconds.
 	</article>
 	<script src="main.js"></script>
 </body>
