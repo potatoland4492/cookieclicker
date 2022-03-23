@@ -90,6 +90,9 @@ article > button#close-help-btn:hover {
 article > button#close-help-btn:focus {
 	transform: scale(1.5);
 }
+article > button#close-help-btn:active {
+	transform: scale(1.5);
+}
 article > button#close-help-btn > img#close-help-img {
 	height: 2.5em;
 	margin: 0;

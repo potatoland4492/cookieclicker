@@ -17,10 +17,10 @@
 		<button id="addpotato-btn" onclick="Store.addPotato()"><span class="code">+1</span> <img class="potato-img" src="potato.png"></button><br><br>
 		<button id="addclickpower-btn" onclick="Store.upgradeClickpower()">Upgrade Clickpower (currently Lvl 1)</button><br><br>
 		<button id="addfarm-btn" onclick="Store.addFarm()">Add Farm (you have 1 Farm)</button>
-		<button id="open-help-btn" onclick="document.getElementById('help').style.display = 'block';">Display help</button>
+		<button id="open-help-btn" onclick="document.getElementById('help').style.zIndex = '10000';">Display help</button>
 	</main>
-	<article id="help">
-		<button id="close-help-btn" onclick="document.getElementById('help').style.display = 'none';"><img id="close-help-img" src="close.png"></button>
+	<!-- <article id="help">
+		<button id="close-help-btn" onclick="document.getElementById('help').style.zIndex = '0';"><img id="close-help-img" src="close.png"></button>
 		<p>Progress will be automatically saved on your local storage every 10 seconds.</p>
 		<button onclick="Store.clearData()" tabindex="-1">Clear All Data</button>
 		<br><br><br>
@@ -31,7 +31,7 @@
 			Each time you click (use the spacebar or a mouse - it's faster than using a trackpad), you will earn <span class="code">${clickpowerLvl}</span> potatoes.<br><br>
 		Generator:<br>
 			The farms will generate <span class="code">${farms}</span> potatoes every 0.5 seconds.
-	</article>
+	</article> -->
 	<script src="main.js"></script>
 </body>
 </html>
