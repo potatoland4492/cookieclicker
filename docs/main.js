@@ -91,7 +91,7 @@ let saveInterval = setInterval(function () {
 }, 10000);
 
 setInterval(function () {
-	document.getElementById('addcookie-btn').innerHTML = `<span class=\"code\">+${parseInt(Store.clickpower)}</span> <img class=\"potato-img\" src=\"potato.png\">`
+	document.getElementById('addpotato-btn').innerHTML = `<span class=\"code\">+${parseInt(Store.clickpower)}</span> <img class=\"potato-img\" src=\"potato.png\">`
 }, 1);
 
 setInterval(function () {
@@ -124,25 +124,25 @@ setInterval(function () {
 	let div;
 	if (Store.stats.tenK === false && Store.potatoes >= 10000) {
 		div = document.createElement('div').setAttribute('class', 'animateStats');
-		div.innerHTML = "Ten thousand <img class=\"cookie-img\" src=\"cookie.png\">? Wow!";
+		div.innerHTML = "Ten thousand <img class=\"potato-img\" src=\"potato.png\">? Wow!";
 		Store.stats.tenK = true;
 		setTimeout(function () { div.remove(); }, 2500);
 	}
 	if (Store.stats.million === false && Store.potatoes >= 1000000) {
 		div = document.createElement('div').setAttribute('class', 'animateStats');
-		div.innerHTML = "One million <img class=\"cookie-img\" src=\"cookie.png\">? Nice!";
+		div.innerHTML = "One million <img class=\"potato-img\" src=\"potato.png\">? Nice!";
 		Store.stats.million = true;
 		setTimeout(function () { div.remove(); }, 2500);
 	}
 	if (Store.stats.billion === false && Store.potatoes >= 1000000000) {
 		div = document.createElement('div').setAttribute('class', 'animateStats');
-		div.innerHTML = "A billion <img class=\"cookie-img\" src=\"cookie.png\">? Epic!";
+		div.innerHTML = "A billion <img class=\"potato-img\" src=\"potato.png\">? Epic!";
 		Store.stats.billion = true;
 		setTimeout(function () { div.remove(); }, 2500);
 	}
 	if (Store.stats.trillion === false && Store.potatoes >= 1000000000000) {
 		div = document.createElement('div').setAttribute('class', 'animateStats');
-		div.innerHTML = "ONE MILLION <img class=\"cookie-img\" src=\"cookie.png\">? Keep on clicking!";
+		div.innerHTML = "ONE MILLION <img class=\"potato-img\" src=\"potato.png\">? Keep on clicking!";
 		Store.stats.trillion = true;
 		setTimeout(function () { div.remove(); }, 2500);
 	}
