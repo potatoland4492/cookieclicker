@@ -43,6 +43,10 @@ button:focus {
 	border-color: #cccccc;
 	transform: scale(1.125);
 }
+button:active {
+	border-color: #cccccc;
+	transform: scale(1.125);
+}
 button#addcookie-btn {
 	font-size: 2em;
 }
