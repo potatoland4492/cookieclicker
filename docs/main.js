@@ -95,11 +95,11 @@ setInterval(function () {
 }, 1);
 
 setInterval(function () {
-	document.getElementById('potatocount-span').innerHTML = Store.potatoes + ' <img class=\"potaot-img\" src=\"potato.png\">';
+	document.getElementById('potatocount-span').innerHTML = Store.potatoes + ' <img class=\"potato-img\" src=\"potato.png\">';
 }, 1);
 
 setInterval(function () {
-	document.getElementById('addclickpower-btn').innerHTML = 'Upgrade Clickpower (currently <span class=\"code\">Lvl ' + Store.clickpower + '</span>, costs <span class=\"code\">' + parseInt(Store.clickpower) * Store.costSlope('clickpower') + '</span> <img class=\"poato-img\" src=\"potato.png\"> to upgrade)';
+	document.getElementById('addclickpower-btn').innerHTML = 'Upgrade Clickpower (currently <span class=\"code\">Lvl ' + Store.clickpower + '</span>, costs <span class=\"code\">' + parseInt(Store.clickpower) * Store.costSlope('clickpower') + '</span> <img class=\"potato-img\" src=\"potato.png\"> to upgrade)';
 }, 1);
 
 setInterval(function () {
