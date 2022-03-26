@@ -72,8 +72,12 @@ let Store = {
 let f = {
 	modal: function (message) {
 		let div = document.createElement('div');
-		div.style="zindex:1000;background-image:rgba(100,100,100,50);position:absolute;top:0;left:0;width:100vw;height:100vh;line-height:100vh;padding:0;margin:0;text-align:center";
+		div.style="zindex:1000000000000;color:#ffffff;font-size:1.75em;background-color:rgba(100,100,100,0.75);position:absolute;top:0;left:0;width:100vw;height:100vh;line-height:100vh;padding:0;margin:0;text-align:center;overflow-wrap:anywhere;";
+    div.innerText = message;
 		document.body.appendChild(div);
+    setTimeout(function () {
+      document.body.removeChild(div);
+    }, 2500);
 	}
 };
 
