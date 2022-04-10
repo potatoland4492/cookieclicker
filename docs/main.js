@@ -20,17 +20,17 @@ let Store = {
         }
         break;
       case 'farms':
-        if (Store.farms < 100) {
+        if (Store.farms + 1 < 100) {
           return 25;
-        } if (Store.farms < 1000) {
+        } if (Store.farms + 1 < 1000) {
           return 50;
-        } else if (Store.farms < 10000) {
+        } else if (Store.farms + 1 < 10000) {
           return 100;
-        } else if (Store.farms < 1000000) {
+        } else if (Store.farms + 1 < 1000000) {
           return 10000;
-        } else if (Store.farms < 1000000000) {
+        } else if (Store.farms + 1 < 1000000000) {
           return 1000000;
-        } else if (Store.farms < 1000000000000) {
+        } else if (Store.farms + 1 < 1000000000000) {
           return 1000000000;
         }
         break;
@@ -52,10 +52,12 @@ let Store = {
   },
   addFarm: function () {
     if (parseInt(Store.potatoes) < Store.costSlope('farms') * parseInt(Store.farms)) {
-      f.modal(`You need ${parseInt(Store.farms * Store.costSlope('farms'))} potatoes to upgrade the farms (${Store.costSlope('farms') * parseInt(Store.farms) - parseInt(Store.potatoes)} more).`)
+      f.modal(`You need ${parseInt(Store.farms * Store.costSlope('farms'))} potatoes to upgrade the farms (${Store.costSlope('farms') * parseInt(Store.farms) - parseInt(Store.potatoes)} more).`);
     } else {
       Store.potatoes = parseInt(Store.potatoes) - Store.costSlope('farms') * parseInt(Store.farms);
       Store.farms = parseInt(Store.farms) + 1;
+			this.potatoes = 0;
+			this.clickpower = 1;
     }
   },
   clearData: function () {
@@ -107,7 +109,7 @@ setInterval(function () {
 }, 1);
 
 setInterval(function () {
-	document.getElementById('addfarms-btn').innerHTML = 'Upgrade farms (currently <span class=\"code\">Lvl ' + Store.farms + '</span>, costs <span class=\"code\">' + parseInt(Store.farms) * Store.costSlope('farms') + '</span> <img class=\"potato-img\" src=\"potato.png\"> to upgrade)';
+	document.getElementById('addfarm-btn').innerHTML = 'Upgrade farms (currently <span class=\"code\">Lvl ' + Store.farms + '</span>, costs <span class=\"code\">' + parseInt(Store.farms) * Store.costSlope('farms') + '</span> <img class=\"potato-img\" src=\"potato.png\"> to upgrade)';
 }, 1);
 
 setInterval(function () {
@@ -122,6 +124,10 @@ document.addEventListener('keydown', (e) => {
 	} else if (e.key === '|' && e.altKey && e.ctrlKey) {
 		Store.farms = 1000000;
 	}
+	// Enter key blocking
+	// if (e.code === 'Enter') {
+	// 	f.modal("Do not use the Enter key's repeat feature; that is cheating.");
+	// }
 });
 
 setInterval(function () {
