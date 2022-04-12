@@ -5,32 +5,32 @@ let Store = {
   costSlope: function (type) {
     switch (type) {
       case 'clickpower':
-        if (Store.clickpower < 100) {
+        if (this.clickpower < 100) {
           return 25;
-        } else if (Store.clickpower < 1000) {
+        } else if (this.clickpower < 1000) {
           return 50;
-        } else if (Store.clickpower < 10000) {
+        } else if (this.clickpower < 10000) {
           return 100;
-        } else if (Store.clickpower < 1000000) {
+        } else if (this.clickpower < 1000000) {
           return 10000;
-        } else if (Store.clickpower < 1000000000) {
+        } else if (this.clickpower < 1000000000) {
           return 1000000;
-        } else if (Store.clickpower < 1000000000000) {
+        } else if (this.clickpower < 1000000000000) {
           return 1000000000;
         }
         break;
       case 'farms':
-        if (Store.farms + 1 < 100) {
+        if (this.farms + 1 < 100) {
           return 25;
-        } if (Store.farms + 1 < 1000) {
+        } if (this.farms + 1 < 1000) {
           return 50;
-        } else if (Store.farms + 1 < 10000) {
+        } else if (this.farms + 1 < 10000) {
           return 100;
-        } else if (Store.farms + 1 < 1000000) {
+        } else if (this.farms + 1 < 1000000) {
           return 10000;
-        } else if (Store.farms + 1 < 1000000000) {
+        } else if (this.farms + 1 < 1000000000) {
           return 1000000;
-        } else if (Store.farms + 1 < 1000000000000) {
+        } else if (this.farms + 1 < 1000000000000) {
           return 1000000000;
         }
         break;
@@ -40,22 +40,22 @@ let Store = {
     }
   },
   addPotato: function () {
-    Store.potatoes = parseInt(Store.potatoes) + parseInt(Store.clickpower);
+    this.potatoes = parseInt(this.potatoes) + parseInt(this.clickpower);
   },
   upgradeClickpower: function () {
-    if (parseInt(Store.potatoes) < Store.costSlope('clickpower') * parseInt(Store.clickpower)) {
-      f.modal(`You need ${parseInt(Store.clickpower * Store.costSlope('clickpower'))} potatoes to upgrade clickpower (${Store.costSlope('clickpower') * parseInt(Store.clickpower) - parseInt(Store.potatoes)} more).`)
+    if (parseInt(this.potatoes) < this.costSlope('clickpower') * parseInt(this.clickpower)) {
+      f.modal(`You need ${parseInt(this.clickpower * this.costSlope('clickpower'))} potatoes to upgrade clickpower (${this.costSlope('clickpower') * parseInt(this.clickpower) - parseInt(this.potatoes)} more).`)
     } else {
-      Store.potatoes = parseInt(Store.potatoes) - Store.costSlope('clickpower') * parseInt(Store.clickpower);
-      Store.clickpower = parseInt(Store.clickpower) + 1;
+      this.potatoes = parseInt(this.potatoes) - this.costSlope('clickpower') * parseInt(this.clickpower);
+      this.clickpower = parseInt(this.clickpower) + 1;
     }
   },
   addFarm: function () {
-    if (parseInt(Store.potatoes) < Store.costSlope('farms') * parseInt(Store.farms)) {
-      f.modal(`You need ${parseInt(Store.farms * Store.costSlope('farms'))} potatoes to upgrade the farms (${Store.costSlope('farms') * parseInt(Store.farms) - parseInt(Store.potatoes)} more).`);
+    if (parseInt(this.potatoes) < this.costSlope('farms') * parseInt(this.farms)) {
+      f.modal(`You need ${parseInt(this.farms * this.costSlope('farms'))} potatoes to upgrade the farms (${this.costSlope('farms') * parseInt(this.farms) - parseInt(this.potatoes)} more).`);
     } else {
-      Store.potatoes = parseInt(Store.potatoes) - Store.costSlope('farms') * parseInt(Store.farms);
-      Store.farms = parseInt(Store.farms) + 1;
+      this.potatoes = parseInt(this.potatoes) - this.costSlope('farms') * parseInt(this.farms);
+      this.farms = parseInt(this.farms) + 1;
 			this.potatoes = 0;
 			this.clickpower = 1;
     }
@@ -80,6 +80,13 @@ let f = {
     setTimeout(function () {
       document.body.removeChild(div);
     }, 2500);
+	},
+	wait: function (ms) {
+		let start = Date.now();
+		let now = start;
+		while (now - start < ms) {
+			now = Date.now();
+		}
 	}
 };
 
@@ -117,6 +124,9 @@ setInterval(function () {
 }, 500);
 
 document.addEventListener('keydown', (e) => {
+	if (e.key === '1' && !e.altKey && !e.ctrlKey) {
+		Store.addPotato();
+	}
 	if (e.key === '~' && e.altKey && e.ctrlKey) {
 		Store.potatoes = 1000000;
 	} else if (e.key === '\\' && e.altKey && e.ctrlKey) {
