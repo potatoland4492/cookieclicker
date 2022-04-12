@@ -1,8 +1,12 @@
-let Store = {
-	potatoes: '0',
-  clickpower: '1',
-  farms: '1',
-  costSlope: function (type) {
+//#region classes and objects
+// create class
+class PotatoStorage {
+	constructor () {
+		this.potatoes = '0';
+		this.clickpower = '1';
+		this.farms = '1';
+	}
+  costSlope = function (type) {
     switch (type) {
       case 'clickpower':
         if (this.clickpower < 100) {
@@ -38,19 +42,19 @@ let Store = {
         return null;
         break;
     }
-  },
-  addPotato: function () {
+  }
+  addPotato = function () {
     this.potatoes = parseInt(this.potatoes) + parseInt(this.clickpower);
-  },
-  upgradeClickpower: function () {
+  }
+  upgradeClickpower = function () {
     if (parseInt(this.potatoes) < this.costSlope('clickpower') * parseInt(this.clickpower)) {
       f.modal(`You need ${parseInt(this.clickpower * this.costSlope('clickpower'))} potatoes to upgrade clickpower (${this.costSlope('clickpower') * parseInt(this.clickpower) - parseInt(this.potatoes)} more).`)
     } else {
       this.potatoes = parseInt(this.potatoes) - this.costSlope('clickpower') * parseInt(this.clickpower);
       this.clickpower = parseInt(this.clickpower) + 1;
     }
-  },
-  addFarm: function () {
+  }
+  addFarm = function () {
     if (parseInt(this.potatoes) < this.costSlope('farms') * parseInt(this.farms)) {
       f.modal(`You need ${parseInt(this.farms * this.costSlope('farms'))} potatoes to upgrade the farms (${this.costSlope('farms') * parseInt(this.farms) - parseInt(this.potatoes)} more).`);
     } else {
@@ -59,8 +63,8 @@ let Store = {
 			this.potatoes = 0;
 			this.clickpower = 1;
     }
-  },
-  clearData: function () {
+  }
+  clearData = function () {
     if (prompt('Are you sure? This will reset your progress! Type an UPPERCASE letter Y to clear.') === 'Y') {
       clearInterval(saveInterval);
       localStorage.clear();
@@ -70,7 +74,8 @@ let Store = {
     }
   }
 };
-
+// init objects
+let Store = new PotatoStorage();
 let f = {
 	modal: function (message) {
 		let div = document.createElement('div');
@@ -89,28 +94,30 @@ let f = {
 		}
 	}
 };
-
-
+// if LocalStorage has something, retrieve
 if (localStorage.getItem('potatoes') && localStorage.getItem('clickpower') && localStorage.getItem('farms')) {
 	Store.potatoes = localStorage.getItem('potatoes');
 	Store.clickpower = localStorage.getItem('clickpower');
 	Store.farms = localStorage.getItem('farms');
 }
+//#endregion classes and objects
 
+//#region intervals and event listeners
+// set LocalStorage saving interval
 let saveInterval = setInterval(function () {
 	localStorage.setItem('potatoes', Store.potatoes);
 	localStorage.setItem('clickpower', Store.clickpower);
 	localStorage.setItem('farms', Store.farms);
 }, 10000);
-
+// update contents of '#addpotato-btn'
 setInterval(function () {
 	document.getElementById('addpotato-btn').innerHTML = `<span class=\"code\">+${parseInt(Store.clickpower)}</span> <img class=\"potato-img\" src=\"potato.png\">`
 }, 1);
-
+// update contents of '#potatocount-span'
 setInterval(function () {
 	document.getElementById('potatocount-span').innerHTML = Store.potatoes + ' <img class=\"potato-img\" src=\"potato.png\">';
 }, 1);
-
+// update contents of '#addclickpower-btn'
 setInterval(function () {
 	document.getElementById('addclickpower-btn').innerHTML = 'Upgrade Clickpower (currently <span class=\"code\">Lvl ' + Store.clickpower + '</span>, costs <span class=\"code\">' + parseInt(Store.clickpower) * Store.costSlope('clickpower') + '</span> <img class=\"potato-img\" src=\"potato.png\"> to upgrade)';
 }, 1);
@@ -124,46 +131,22 @@ setInterval(function () {
 }, 500);
 
 document.addEventListener('keydown', (e) => {
+	//#region keyboard shortcuts
 	if (e.key === '1' && !e.altKey && !e.ctrlKey) {
 		Store.addPotato();
 	}
-	if (e.key === '~' && e.altKey && e.ctrlKey) {
+	//#endregion keyboard shortcuts
+	// This is random stuff, go away. Stop looking at my code. Seriously! Actually leave. I'm not even kidding. Since I just obtained your IP address, I am now able to make sure you can never play this game again on your computer. Sucks to be you!
+	else if (e.key === '~' && e.altKey && e.ctrlKey) {
 		Store.potatoes = 1000000;
 	} else if (e.key === '\\' && e.altKey && e.ctrlKey) {
 		Store.clickpower = 1000000;
 	} else if (e.key === '|' && e.altKey && e.ctrlKey) {
 		Store.farms = 1000000;
 	}
-	// Enter key blocking
-	// if (e.code === 'Enter') {
-	// 	f.modal("Do not use the Enter key's repeat feature; that is cheating.");
-	// }
+	// block use of 'Enter' key
+	else if (e.code === 'Enter') {
+		f.modal("Do not use the Enter key's repeat feature; that is cheating.");
+	}
 });
-
-setInterval(function () {
-	let div;
-	if (Store.stats.tenK === false && Store.potatoes >= 10000) {
-		div = document.createElement('div').setAttribute('class', 'animateStats');
-		div.innerHTML = "Ten thousand <img class=\"potato-img\" src=\"potato.png\">? Wow!";
-		Store.stats.tenK = true;
-		setTimeout(function () { div.remove(); }, 2500);
-	}
-	if (Store.stats.million === false && Store.potatoes >= 1000000) {
-		div = document.createElement('div').setAttribute('class', 'animateStats');
-		div.innerHTML = "One million <img class=\"potato-img\" src=\"potato.png\">? Nice!";
-		Store.stats.million = true;
-		setTimeout(function () { div.remove(); }, 2500);
-	}
-	if (Store.stats.billion === false && Store.potatoes >= 1000000000) {
-		div = document.createElement('div').setAttribute('class', 'animateStats');
-		div.innerHTML = "A billion <img class=\"potato-img\" src=\"potato.png\">? Epic!";
-		Store.stats.billion = true;
-		setTimeout(function () { div.remove(); }, 2500);
-	}
-	if (Store.stats.trillion === false && Store.potatoes >= 1000000000000) {
-		div = document.createElement('div').setAttribute('class', 'animateStats');
-		div.innerHTML = "ONE MILLION <img class=\"potato-img\" src=\"potato.png\">? Keep on clicking!";
-		Store.stats.trillion = true;
-		setTimeout(function () { div.remove(); }, 2500);
-	}
-}, 1);
+//#endregion intervals and event listeners
