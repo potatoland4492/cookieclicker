@@ -1,3 +1,9 @@
+/*
+	*	PotatoStorage.js - Akhil Pillai
+	*	// const { PotatoStorage } = require('https://github.com/potatoland4492/potatofarms/blob/2312ae25ad9a7d86883cb3780d1b3a0fa3b68435/PotatoStorage.js');
+	*	// const Store = new PotatoStorage();
+*/
+
 exports.PotatoStorage = class PotatoStorage {
 	constructor() {
 		// init properties
